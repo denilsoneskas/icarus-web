@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Fabricantes</title>
+  <style>
+    td, tr, th, table {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  Nome do Fabricante: <input name="nomeFabricante" id="nomeFabricante">
+  <br>
+  <input type="submit" id="salvarFabricante" value="Salvar" method="POST" onclick="salvarFabricante()">
+  <br>
+  <br>
+  <table id="fabricante">
+    <th>Fabricante</th><th colspan="2">Ações</th>
+  </table>
+  <a href="../index.html">Voltar ao Menu</a>
+  <a href="../aeronave/aeronave.html">Cadastrar Aeronave</a>
+  <script src="fabricante.js"></script>
+</body>
+</html>

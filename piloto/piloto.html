@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Pilotos</title>
+  <style>
+    td, tr, th, table {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  Código: <input type="number" name="codigo" id="codigo"><br>
+  Nome: <input name="nome" id="nome"><br>
+  Nascimento: <input type="date" id="nascimento"><br>
+  Endereco: <select id="selecionarEndereco" onclick="selecionarEndereco()"></select><br>
+  Aeronave: <select id="selecionarAeronave" onclick="selecionarAeronave()"></select><br>
+  Clube: <select id="selecionarClube" onclick="selecionarClube()"></select>
+  <br>
+  <input type="submit" id="salvarPiloto" value="Salvar" method="POST" onclick="salvarPiloto()">
+  <br>
+  <br>
+  <table id="piloto">
+    <th>Nome</th><th>Parapente</th><th>Clube</th><th colspan="2">Ações</th>
+  </table>
+  <a href="../index.html">Voltar ao Menu</a>
+  <script src="piloto.js"></script>
+</body>
+</html>
