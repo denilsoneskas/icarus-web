@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Clubes</title>
+  <title>Realizar Etapa</title>
   <style>
     td, tr, th, table {
       border: 1px solid black;
@@ -12,18 +12,20 @@
   </style>
 </head>
 <body>
-  Nome: <input name="nome" id="nome"><br>
-  Endereco: <select id="selecionarEndereco" onclick="selecionarEndereco()">
+  Prova: <select id="selecionarProva" onclick="selecionarProva()">
     <option>Selecione</option>
   </select><br>
-  <input type="submit" id="salvarClube" value="Salvar" method="POST" onclick="salvarClube()">
+  Piloto: <select id="selecionarPiloto" onclick="selecionarPiloto()">
+    <option>Selecione</option>
+  </select><br>
+  <input type="submit" id="salvar" value="Salvar" method="POST" onclick="salvarEtapa()">
   <br>
   <br>
-  <table id="clube">
-    <th>Nome</th><th>Logradouro</th><th colspan="2">Ações</th>
+  <table id="etapa">
+    <th>Prova</th><th>Piloto</th><th colspan="4">Controles Prova</th>
   </table>
   <a href="../index.html">Voltar ao Menu</a>
   <script src="../metodos.js"></script>
-  <script src="clube.js"></script>
+  <script src="etapa.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aeronave</title>
+  <title>Cadastro de Provas</title>
   <style>
     td, tr, th, table {
       border: 1px solid black;
@@ -12,28 +12,16 @@
   </style>
 </head>
 <body>
-  Modelo: <input name="modelo" id="modelo"><br>
-  Certificação: 
-  <select name="Certificação" id="certificacao">
-    <option value="EN-A">EN-A</option>
-    <option value="EN-B">EN-B</option>
-    <option value="EN-C">EN-C</option>
-    <option value="EN-D">EN-D</option>
-    <option value="CCC">CCC</option>
-    <option value="NÃO HOMOLOGADO">Não Homologado</option>
-  </select>
-  <br>
-  Fabricante: <select id="selecionarFabricante" onclick="selecionarFabricante()">
-    <option>Selecione</option>
-  </select>
-  <br>
-  <input type="submit" id="salvarAeronave" value="Salvar" method="POST" onclick="salvarAeronave()">
+  Nome: <input name="nome" id="nome"><br>
+  Data: <input type="date" id="dataProva"><br>
+  <input type="submit" id="salvarProva" value="Salvar" method="POST" onclick="salvarProva()">
   <br>
   <br>
-  <table id="aeronave">
-    <th>Modelo</th><th>Certificação</th><th>Fabricante</th><th colspan="2">Ações</th>
+  <table id="prova">
+    <th>Prova</th><th>Data</th><th colspan="2">Ações</th>
   </table>
-  <a href="index.html">Voltar ao Menu</a>
-  <script src="aeronave.js"></script>
+  <a href="../index.html">Voltar ao Menu</a>
+  <script src="../metodos.js"></script>
+  <script src="prova.js"></script>
 </body>
 </html>

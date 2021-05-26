@@ -1,180 +1,95 @@
-var urlPadrao="http://127.0.0.1:8080/"
+// CONTROLES PARA PROVA
 
-// #############################################################################
-// METHODOS HTTP
+function listarProvas(){
+  let dados=executarGet("provas")
+  let provas = JSON.parse(dados)
+  let tabela = document.getElementById("prova")
 
-function salvar(recurso,json) {
-  executarPost(recurso,json)
-  document.location.reload(true)
-}
-function executarPost(recurso,json) {
-  let url = urlPadrao+recurso
-  let request = new XMLHttpRequest()
-  request.open("POST", url, false)
-  request.setRequestHeader("Content-Type", "application/json")
-  request.send(json)
-  return request.responseText
+  provas.forEach(element => {
+    linha = criaLinha(element);
+    tabela.appendChild(linha);
+  });
 }
 
-function executarGet(recurso) {
-  let url = urlPadrao+recurso
-  let request = new XMLHttpRequest()
-  request.open("GET", url, false)
-  request.send()
-  return request.responseText
-}
-
-function executarGetPorId(recurso,id) {
-  let url = urlPadrao+recurso+"/"+id
-  let request = new XMLHttpRequest()
-  request.open("GET", url, false)
-  request.send()
-  return request.responseText
-}
-
-function editar(recurso,id,json){
-  executarPut(recurso,id,json)
-  document.location.reload(true)
-}
-function executarPut(recurso,id,json) {
-  let url = urlPadrao+recurso+"/"+id
-  let request = new XMLHttpRequest()
-  request.open("PUT", url, false)
-  request.setRequestHeader("Content-Type", "application/json")
-  request.send(json)
-  return request.responseText
-}
-
-function deletar(recurso,id){
-  executarDelete(recurso,id)
-  document.location.reload(true)
-}
-function executarDelete(recurso,id) {
-  let url = urlPadrao+recurso+"/"+id
-  let request = new XMLHttpRequest()
-  request.open("DELETE", url, false)
-  request.send()
-  return request.responseText
-}
-
-// #############################################################################
-// CONTROLES PARA AERONAVE
-
-function criaLinha(aeronave) {
+function criaLinha(prova) {
   linha = document.createElement("tr")
-  tdModelo = document.createElement("td")
-  tdCertificacao = document.createElement("td")
-  tdFabricante = document.createElement("td")
+  tdNomeProva = document.createElement("td")
+  tdData = document.createElement("td")
   tdEdit = document.createElement("td")
   tdDelete = document.createElement("td")
   
-  var testeEdit = '<button onClick=habilitaEditarAeronave('+aeronave.id+')>Editar</button>'
-  var testeDelete = '<button onClick=deletarAeronave('+aeronave.id+')>Remover</button>'
+  var editProva = '<button onClick=habilitaEditarProva('+prova.id+')>Editar</button>'
+  var delProva = '<button onClick=deletarProva('+prova.id+')>Remover</button>'
   
-  tdModelo.innerHTML = aeronave.modelo
-  tdCertificacao.innerHTML = aeronave.certificacao
-  tdFabricante.innerHTML = aeronave.fabricante.nome
-  tdEdit.innerHTML = testeEdit
-  tdDelete.innerHTML = testeDelete
+  tdNomeProva.innerHTML = prova.nome
+  tdData.innerHTML = prova.dataProva
+  tdEdit.innerHTML = editProva
+  tdDelete.innerHTML = delProva
 
-  linha.appendChild(tdModelo)
-  linha.appendChild(tdCertificacao)
-  linha.appendChild(tdFabricante)
+  linha.appendChild(tdNomeProva)
+  linha.appendChild(tdData)
   linha.appendChild(tdEdit)
   linha.appendChild(tdDelete)
 
   return linha
 }
 
-function salvarAeronave(){
-  let inputModelo = document.getElementById("modelo")
-  let selectFabricante = document.getElementById("selecionarFabricante")
-  let selectCertificacao = document.getElementById("certificacao")
+function salvarProva(){
+  let inputNome = document.getElementById("nome")
+  let dataProva = document.getElementById("dataProva")
 
-  const aeronave = {
-    "fabricante" : selectFabricante.value,
-    "modelo" : inputModelo.value,
-    "certificacao" : selectCertificacao.value
+  dataProva = dataProva.value+"T03:00:00.000Z"
+
+  const prova = {
+    "nome" : inputNome.value,
+    "dataProva" : dataProva
   }
-  let json = JSON.stringify(aeronave)
+  let json = JSON.stringify(prova)
 
-  if (selectFabricante.value == "Selecione" || selectFabricante.value == ""){
-    alert("Selecione um Fabricante!")
+  if (inputNome.value == null || inputNome.value == ""){
+    alert("Digite um nome para a prova!")
   } else {
-    if ( inputModelo.value == ""){
-      alert("Digite o nome do modelo!")
-    } else {
-      salvar("aeronaves",json)
-    }
+    salvar("provas",json)
   }
 }
 
-function selecionarFabricante() {
-  let selectFabricante = document.getElementById("selecionarFabricante")
-  var len = document.querySelector("#selecionarFabricante")
-  var len = len.getElementsByTagName('option').length
+function habilitaEditarProva(id){
+  let provaExitente = executarGetPorId("provas",id)
+  if( provaExitente !=null && provaExitente != ""){
+    prova = JSON.parse(provaExitente)
+    let inputNome = document.getElementById("nome")
+    let data = document.getElementById("data")
 
-  if (len == 1) {
-    response = executarGet("fabricantes")
-    fabricantes = JSON.parse(response)
-  
-    fabricantes.forEach(element => {
-      optionElement = document.createElement("option")
-      optionElement.value = element.id
-      optionElement.innerHTML = element.nome
-      selectFabricante.appendChild(optionElement)
-    })
-  }
-}
-
-function listarAeronaves(){
-  let dados=executarGet("aeronaves")
-  let aeronaves = JSON.parse(dados)
-  let tabela = document.getElementById("aeronave")
-
-  aeronaves.forEach(element => {
-    linha = criaLinha(element);
-    tabela.appendChild(linha);
-  });
-}
-
-function habilitaEditarAeronave(id){
-  let aeronaveExitente = executarGetPorId("aeronaves",id)
-  if( aeronaveExitente !=null && aeronaveExitente != ""){
-    aeronave = JSON.parse(aeronaveExitente)
-    let inputModelo = document.getElementById("modelo")
-    let selectCertificacao = document.getElementById("certificacao")
-    let selectFabricante = document.getElementById("selecionarFabricante")
-
-    inputModelo.value = aeronave.modelo
-    selectCertificacao.value = aeronave.certificacao
-    selectFabricante.value = aeronave.fabricante.nome
+    inputNome.value = prova.nome
+    data = prova.data
     
-    let botaoSalvar = document.getElementById("salvarAeronave")
+    let botaoSalvar = document.getElementById("salvarProva")
     botaoSalvar.value="Atualizar"
-    botaoSalvar.setAttribute('onclick', "editarAeronave(id)");
+    botaoSalvar.setAttribute('onclick', "editarProva(id)");
     botaoSalvar.id = id
     botaoSalvar.setAttribute('method', "PUT");
   }
 }
-function editarAeronave(id){
-  let inputModelo = document.getElementById("modelo")
-  let selectCertificacao = document.getElementById("certificacao")
-  let selectFabricante = document.getElementById("selecionarFabricante")
-  const nome = {
-    "fabricante" : selectFabricante.value,
-    "modelo" : inputModelo.value,
-    "certificacao" : selectCertificacao.value
+
+function editarProva(id){
+  let inputNome = document.getElementById("nome")
+  let dataProva = document.getElementById("dataProva")
+
+  dataProva = dataProva.value+"T03:00:00.000Z"
+
+  const prova = {
+    "nome" : inputNome.value,
+    "dataProva" : dataProva
   }
-  let json = JSON.stringify(nome)
-  editar("aeronaves",id, json)
+  let json = JSON.stringify(prova)
+  editar("provas",id, json)
 }
 
-function deletarAeronave(id){
-  deletar("aeronaves",id)
+function deletarProva(id){
+  deletar("provas",id)
 }
 
-// FIM CONTROLES AERONAVE
+// FIM CONTROLES PROVA
 //##############################################################################
 
-listarAeronaves()
+listarProvas()
