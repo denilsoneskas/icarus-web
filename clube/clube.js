@@ -108,5 +108,5 @@ function selecionarEndereco() {
 // FIM CONTROLES CLUBE
 //##############################################################################
 
-listarClubes()
 selecionarEndereco()
+listarClubes()
