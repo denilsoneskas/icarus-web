@@ -53,6 +53,19 @@ function executarPutPorAcao(recurso,id,acao) {
   return request.responseText
 }
 
+function editarComPatch(recurso,id,json){
+  executarPatch(recurso,id,json)
+  document.location.reload(true)
+}
+function executarPatch(recurso,id,json) {
+  let url = urlPadrao+recurso+"/"+id
+  let request = new XMLHttpRequest()
+  request.open("PATCH", url, false)
+  request.setRequestHeader("Content-Type", "application/json")
+  request.send(json)
+  return request.responseText
+}
+
 function deletar(recurso,id){
   executarDelete(recurso,id)
   document.location.reload(true)

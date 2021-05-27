@@ -153,13 +153,38 @@ function selecionarPiloto() {
 
 function decolarPiloto(id) {
   executarPutPorAcao("etapas",id,"decolar")
+  alert("Decolagem Registrada!")
 }
 
 function pousarPiloto(id) {
   executarPutPorAcao("etapas",id,"pousar")
+  alert("Pouso Registrado!")
 }
 
 function distanciaMosca(id) {
+  document.getElementById('popup').style.display = 'block'
+  document.getElementById('muda').value = id
+}
+
+function fecharPopup() {
+  document.getElementById('popup').style.display = 'none'
+}
+
+function lancarPontuacaoMosca(){
+  let pontuacaoMosca = document.getElementById("pontuacaoMosca")
+  let muda = document.getElementById("muda")
+  let id = muda.value
+  let leitura = pontuacaoMosca.value
+
+  if (leitura == "Selecione") {
+    alert("Selecione um valor abaixo")
+  } else {
+    const etapa = {
+      "distanciaMosca" : leitura
+    }
+    let json = JSON.stringify(etapa)
+    editarComPatch("etapas",id, json)
+  }
 }
 
 // FIM CONTROLES ETAPA
