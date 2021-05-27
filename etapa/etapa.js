@@ -8,6 +8,34 @@ function listarEtapas(){
   etapas.forEach(element => {
     linha = criaLinha(element);
     tabela.appendChild(linha);
+
+    decolarId="decolar"+element.id
+    pousarId="pousar"+element.id
+    distanciaId="distancia"+element.id
+    let botaoDecolar = document.getElementById(decolarId)
+    let botaoPousar = document.getElementById(pousarId)
+    let botaoDistancia = document.getElementById(distanciaId)
+
+    if (element.decolagem != "" && element.decolagem != null) {
+      botaoDecolar.disabled = true
+    } else {
+      botaoDecolar.disabled = false
+    }
+
+    if (element.pouso != "" && element.pouso != null){
+      if (element.decolagem != "" && element.decolagem != null) {
+        botaoPousar.disabled = true
+      } else {
+        botaoPousar.disabled = false
+      }
+    } else {
+      if (element.decolagem != "" && element.decolagem != null) {
+        botaoPousar.disabled = false
+      } else {
+        botaoPousar.disabled = true
+      }
+    }
+    
   });
 }
 
@@ -20,9 +48,9 @@ function criaLinha(etapa) {
   tdDistancia = document.createElement("td")
   tdDelete = document.createElement("td")
   
-  var decolar = '<button onClick=decolarPiloto('+etapa.id+')>Decolar</button>'
-  var pousar = '<button onClick=pousarPiloto('+etapa.id+')>Pousar</button>'
-  var distancia = '<button onClick=distanciaMosca('+etapa.id+')>Distancia</button>'
+  var decolar = '<button id=decolar'+etapa.id+' onClick=decolarPiloto('+etapa.id+')>Decolar</button>'
+  var pousar = '<button id=pousar'+etapa.id+' onClick=pousarPiloto('+etapa.id+')>Pousar</button>'
+  var distancia = '<button id=distancia'+etapa.id+' onClick=distanciaMosca('+etapa.id+')>Distancia</button>'
   var delEtapa = '<button onClick=deletarEtapa('+etapa.id+')>Remover</button>'
   
   tdProva.innerHTML = etapa.prova.nome
@@ -154,11 +182,13 @@ function selecionarPiloto() {
 function decolarPiloto(id) {
   executarPutPorAcao("etapas",id,"decolar")
   alert("Decolagem Registrada!")
+  document.location.reload(true)
 }
 
 function pousarPiloto(id) {
   executarPutPorAcao("etapas",id,"pousar")
   alert("Pouso Registrado!")
+  document.location.reload(true)
 }
 
 function distanciaMosca(id) {

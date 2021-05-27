@@ -2,6 +2,7 @@
 
 function apurarProva(){
   let selectProva = document.getElementById("selecionarProva")
+  let botaoApurarProva = document.getElementById("botaoApurarProva")
   let leitura = selectProva.value
 
   if (leitura == "Selecione"){
@@ -9,6 +10,7 @@ function apurarProva(){
   } else {
     listarApuracaoPermanencia(leitura)
     listarApuracaoPontuacaoMosca(leitura)
+    botaoApurarProva.disabled = true
   }
 }
 
@@ -51,9 +53,34 @@ function criaLinha(apuracao) {
   tdModelo.innerHTML = apuracao.aeronaveModelo
   tdFabricante.innerHTML = apuracao.fabricanteNome
   tdClube.innerHTML = apuracao.clubeNome
-  tdDecolagem.innerHTML = apuracao.decolagem
-  tdPouso.innerHTML = apuracao.pouso
-  tdPermanencia.innerHTML = apuracao.permanencia
+  
+  let decolagem = new Date(apuracao.decolagem)
+  let horaDecolagem = decolagem.getHours()+":"+decolagem.getMinutes()+":"+decolagem.getSeconds()
+  let pouso = new Date(apuracao.pouso)
+  let horaPouso = pouso.getHours()+":"+pouso.getMinutes()+":"+pouso.getSeconds()
+  let horaPermanencia = apuracao.permanencia
+
+  if (horaDecolagem == "21:0:0") {
+    horaDecolagem = "Aguarde"
+  } else {
+    horaDecolagem = horaDecolagem
+  }
+
+  if (horaPouso == "21:0:0") {
+    horaPouso = "Aguarde"
+  } else {
+    horaPouso = horaPouso
+  }
+
+  if (horaPermanencia == null) {
+    horaPermanencia = "Aguarde"
+  } else {
+    horaPermanencia = horaPermanencia
+  }
+
+  tdDecolagem.innerHTML = horaDecolagem
+  tdPouso.innerHTML = horaPouso
+  tdPermanencia.innerHTML = horaPermanencia
   tdPontuacaoMosca.innerHTML = apuracao.distanciaMosca
 
   linha.appendChild(tdPiloto)
@@ -72,11 +99,11 @@ function selecionarProva() {
   let selectProva = document.getElementById("selecionarProva")
   var len = document.querySelector("#selecionarProva")
   var len = len.getElementsByTagName('option').length
-
+  
   if (len == 1) {
     response = executarGet("provas")
     provas = JSON.parse(response)
-  
+    
     provas.forEach(element => {
       optionElement = document.createElement("option")
       optionElement.value = element.id
