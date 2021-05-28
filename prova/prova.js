@@ -58,10 +58,10 @@ function habilitaEditarProva(id){
   if( provaExitente !=null && provaExitente != ""){
     prova = JSON.parse(provaExitente)
     let inputNome = document.getElementById("nome")
-    let data = document.getElementById("data")
+    let dataProva = document.getElementById("dataProva")
 
     inputNome.value = prova.nome
-    data = prova.data
+    dataProva.value = prova.dataProva
     
     let botaoSalvar = document.getElementById("salvarProva")
     botaoSalvar.value="Atualizar"
