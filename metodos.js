@@ -1,4 +1,6 @@
-var urlPadrao="http://127.0.0.1:8080/"
+//var urlPadrao="http://127.0.0.1:8080/"
+var urlPadrao="https://icarusxc.herokuapp.com/"
+
 
 // #############################################################################
 // METHODOS HTTP
