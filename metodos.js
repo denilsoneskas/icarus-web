@@ -79,3 +79,13 @@ function executarDelete(recurso,id) {
   request.send()
   return request.responseText
 }
+
+// OUTRAS FUNCOES
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}

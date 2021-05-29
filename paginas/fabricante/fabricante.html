@@ -7,19 +7,25 @@
   <title>Cadastro de Fabricantes</title>
   <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../bootstrap/css/style.css" rel="stylesheet">
+  <link href="../../icarus.css" rel="stylesheet">
 </head>
 <body>
   <div class="container-fluid">
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="../../index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">
-          Cadastro de Fabricantes
-        </li>
-      </ol>
-    </nav>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="../../index.html">Home</a>
+      <a href="../../paginas/fabricante/fabricante.html">Fabricante</a>
+      <a href="../../paginas/aeronave/aeronave.html">Aeronaves</a>
+      <a href="../../paginas/cidade/cidade.html">Cidades</a>
+      <a href="../../paginas/endereco/endereco.html">Endereços</a>
+      <a href="../../paginas/clube/clube.html">Clubes</a>
+      <a href="../../paginas/piloto/piloto.html">Pilotos</a>
+      <a href="../../paginas/prova/prova.html">Provas</a>
+      <a href="../../paginas/etapa/etapa.html">Etapas</a>
+      <a href="../../paginas/apuracao/apuracao.html">Apuração</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; IcarusXC </span>
+    (Cadastro de Fabricantes)
     <div class="row">
       <div class="col-md-12">
         <label for="nomeFabricante">Nome</label>
