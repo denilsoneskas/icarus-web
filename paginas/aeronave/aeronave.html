@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Aeronaves</title>
+  <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../bootstrap/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../../index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          Cadastro de Aeronaves
+        </li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-md-5">
+        <label for="modelo">Modelo</label>
+        <input class="form-control" name="modelo" id="modelo">
+      </div>
+      <div class="col-md-5">
+        <label for="selecionarFabricante">Selecione o Fabricante</label>
+        <select class="form-control" id="selecionarFabricante" onclick="selecionarFabricante()">
+          <option>Selecione</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="certificacao">Certificação</label>
+        <select class="form-control" name="Certificação" id="certificacao">
+          <option value="EN-A">EN-A</option>
+          <option value="EN-B">EN-B</option>
+          <option value="EN-C">EN-C</option>
+          <option value="EN-D">EN-D</option>
+          <option value="CCC">CCC</option>
+          <option value="NÃO HOMOLOGADO">Não Homologado</option>
+        </select>
+      </div>
+    </div>
+    <input class="btn btn-success" type="submit" id="salvarAeronave" value="Salvar" method="POST" onclick="salvarAeronave()">
+    <table id="aeronave" class="table table-hover table-sm table-bordered">
+      <th>Modelo</th><th>Certificação</th><th>Fabricante</th><th colspan="2">Ações</th>
+    </table>
+  </div>
+  <script src="../../metodos.js"></script>
+  <script src="aeronave.js"></script>
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../bootstrap/js/scripts.js"></script>
+</body>
+</html>

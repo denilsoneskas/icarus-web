@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Fabricantes</title>
+  <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../bootstrap/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../../index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          Cadastro de Fabricantes
+        </li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="nomeFabricante">Nome</label>
+        <input class="form-control" name="nomeFabricante" id="nomeFabricante">
+      </div>
+    </div>
+    <input class="btn btn-success" type="submit" id="salvarFabricante" value="Salvar" method="POST" onclick="salvarFabricante()">
+    <table id="fabricante" class="table table-hover table-sm table-bordered">
+      <th>Fabricante</th><th colspan="2">Ações</th>
+    </table>
+  </div>
+  <script src="../../metodos.js"></script>
+  <script src="fabricante.js"></script>
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../bootstrap/js/scripts.js"></script>
+</body>
+</html>

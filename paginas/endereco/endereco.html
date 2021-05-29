@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Endereços</title>
+  <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../bootstrap/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../../index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          Cadastro de Endereços
+        </li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-md-5">
+        <label for="logradouro">Logradouro</label>
+        <input class="form-control" name="logradouro" id="logradouro">
+      </div>
+      <div class="col-md-2">
+        <label for="numero">Número</label>
+        <input class="form-control" type="number" name="numero" id="numero">
+      </div>
+      <div class="col-md-5">
+        <label for="bairro">Bairro</label>
+        <input class="form-control" name="bairro" id="bairro">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="complemento">Complemento</label>
+        <input class="form-control" name="complemento" id="complemento">
+      </div>
+      <div class="col-md-6">
+        <label for="referencia">Referência</label>
+        <input class="form-control" name="referencia" id="referencia">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="selecionarCidade">Selecione a Cidade</label>
+        <select class="form-control" id="selecionarCidade" onclick="selecionarCidade()">
+          <option>Selecione</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="cep">CEP</label>
+        <input class="form-control" name="cep" id="cep">
+      </div>
+    </div>
+    <input class="btn btn-success" type="submit" id="salvarEndereco" value="Salvar" method="POST" onclick="salvarEndereco()">
+    <table id="endereco" class="table table-hover table-sm table-bordered">
+      <th>Logradouro</th><th colspan="2">Ações</th>
+    </table>
+  <script src="../../metodos.js"></script>
+  <script src="endereco.js"></script>
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../bootstrap/js/scripts.js"></script>
+</body>
+</html>

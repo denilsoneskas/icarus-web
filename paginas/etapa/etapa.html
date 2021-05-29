@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realizar Etapa</title>
+  <style>
+    .popup {
+      position: fixed;
+      top: 0; right: 0;
+      left: 0; right: 0;
+      margin: auto;
+      width: 250px;
+      height: 180x;
+      padding: 15px;
+      border: solid 1px #41c4d4f;
+      background: #DBDBDB;
+      display: none;
+    }
+  </style>
+  <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../bootstrap/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="container-fluid">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="../../index.html">Home</a>
+          </li>
+          <li class="breadcrumb-item active">
+            Realizar Etapa
+          </li>
+        </ol>
+      </nav>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label for="selecionarProva">Selecionar Prova</label>  
+          <select id="selecionarProva" class="form-control" onclick="selecionarProva()">
+            <option>Selecione</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="selecionarPiloto">Selecionar Piloto</label>  
+          <select id="selecionarPiloto" class="form-control" onclick="selecionarPiloto()">
+            <option>Selecione</option>
+          </select>
+        </div>
+      </div>
+    <input class="btn btn-success" type="submit" id="salvar" value="Salvar" method="POST" onclick="salvarEtapa()">
+    <table id="etapa" class="table table-hover table-sm table-bordered">
+      <th>Prova</th><th>Piloto</th><th colspan="4">Controles Prova</th>
+    </table>
+
+    <div id="popup" class="popup">
+      <form method="PATCH" action="javascript: lancarPontuacaoMosca()">
+        <label for="pontuacaoMosca">Selecionar Pontuação</label>  
+        <select name="pontuacaoMosca" class="form-control"  id="pontuacaoMosca">
+        <option>Selecione</option>
+        <option value="0">0 Ponto</option>
+        <option value="25">25 Pontos</option>
+        <option value="50">50 Pontos</option>
+        <option value="75">75 Pontos</option>
+        <option value="100">100 Pontos</option>
+        </select>
+        <input class="btn btn-success" type="submit" value="Lançar">
+        <button class="btn btn-warning"><a href="javascript: fecharPopup()">Fechar</a></button>
+
+        <button id="muda" hidden></button>
+
+      </form>
+    </div>
+  </div>
+  <script src="../../metodos.js"></script>
+  <script src="etapa.js"></script>
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../bootstrap/js/scripts.js"></script>
+</body>
+</html>

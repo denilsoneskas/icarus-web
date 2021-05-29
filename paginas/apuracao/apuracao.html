@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apurar Etapa</title>
+  <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../bootstrap/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../../index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          Apuração da Prova
+        </li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="selecionarProva">Selecione a Prova</label>
+        <select class="form-control" id="selecionarProva" onclick="selecionarProva()">
+          <option>Selecione</option>
+        </select>
+      </div>
+    </div>
+    <input class="btn btn-success" type="submit" id="botaoApurarProva" value="Apurar Prova" method="POST" onclick="apurarProva()">
+    <h3>Resultado Permanência</h3>
+    <table id="permanencia" class="table table-hover table-sm table-bordered">
+      <th>Piloto</th><th>Aeronave</th><th>Fabricante</th><th>Clube</th><th>Decolagem</th><th>Pouso</th><th>Permanência</th><th>Pontuação Mosca</th>
+    </table>
+    <h3>Resultado Pontuação Mosca</h3>
+    <table id="pontuacaoMosca" class="table table-hover table-sm table-bordered">
+      <th>Piloto</th><th>Aeronave</th><th>Fabricante</th><th>Clube</th><th>Decolagem</th><th>Pouso</th><th>Permanência</th><th>Pontuação Mosca</th>
+    </table>
+  </div>
+  <script src="../../metodos.js"></script>
+  <script src="apuracao.js"></script>
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../bootstrap/js/scripts.js"></script>
+</body>
+</html>
